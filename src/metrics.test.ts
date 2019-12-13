@@ -2,7 +2,7 @@ import chai, { expect } from 'chai'
 import { Metric, MetricsHandler } from './metrics'
 import { LevelDB } from "./leveldb"
 
-const dbPath: string = 'dbTEST/metrics'
+const dbPath: string = 'db/tests/metrics'
 var dbMet: MetricsHandler// = new MetricsHandler(dbPath)
 
 describe('Metrics', function () {
