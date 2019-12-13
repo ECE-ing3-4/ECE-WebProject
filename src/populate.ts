@@ -5,8 +5,8 @@ const met = [
   new Metric(`${new Date('2013-11-04 14:00 UTC').getTime()}`, 1,"neil"),
   new Metric(`${new Date('2013-11-04 14:15 UTC').getTime()}`, 2,"neil"),
   new Metric(`${new Date('2013-11-04 14:30 UTC').getTime()}`, 3,"neil"),
-  new Metric(`${new Date('2013-11-04 14:15 UTC').getTime()}`, 4,"neil2"),
-  new Metric(`${new Date('2013-11-04 14:30 UTC').getTime()}`, 5,"neil2")
+  new Metric(`${new Date('2013-11-04 14:45 UTC').getTime()}`, 4,"neil2"),
+  new Metric(`${new Date('2013-11-04 15:00 UTC').getTime()}`, 5,"neil2")
 ]
 const usr = [
   new User("neil","a@gmail.com","dev",false),
