@@ -1,6 +1,6 @@
 sudo:true
 node_js:
-- node
+- "node"
 git:
   depth: false
 before_script:
