@@ -4,6 +4,7 @@ node_js:
 - "node"
 git:
   depth: 1
+language: node-js
 before_script:
 - npm install
 script:
