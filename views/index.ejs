@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include partials/head %>
+</head>
+
+<body class="container">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Hello <%= name %> !</h1>
+    <button class="btn btn-success" id="show-metrics">
+      Bring the metrics
+    </button>
+    <button class="btn btn-success" href="/addmetric" onClick='document.location.href="/addmetric"'>
+      Add a metrics
+    </button>
+    <button class="btn btn-success" href="/deletemetric" onClick='document.location.href="/deletemetric"'>
+      Delete a metrics
+    </button>
+    <button class="btn btn-primary" href="/changepwd" onClick='document.location.href="/changepwd"'>
+      Change my password
+    </button>
+    <div id="metrics"></div>
+    <button class="btn btn-danger" href="/logout" onClick='document.location.href="/logout"'>
+      Logout
+    </button>
+    <button class="btn btn-danger" href="/delete" onClick='document.location.href="/delete"'>
+      Delete
+    </button>
+  </div>
+  
+  <script>
+    $('#show-metrics').click((e) => {
+      e.preventDefault();
+      $.getJSON("/metrics", {}, (data) => {
+        const content = data.map(d => {
+          return 'timestamp: ' + d.timestamp + ', value: ' + d.value + '<br/>';
+        })
+        $('#metrics').append(content.join("\n"));
+      });
+    })
+  </script>
+</body>
+
+</html>

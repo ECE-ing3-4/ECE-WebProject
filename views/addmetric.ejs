@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include partials/head %>
+</head>
+
+<body class="container">
+
+  <div id="form">
+    <p>Please enter things</p>
+    <hr />
+    <form action="/addmetric" method="post">
+      <div class="form-group">
+        <label for="form_timestamp">Time Stamp</label>
+        <input id="form_timestamp" type="text" name="timestamp" />
+      </div>
+      <div class="form-group">
+        <label for="form_key">Key</label>
+        <input id="form_key" type="text" name="key" />
+      </div>
+      <div class="form-group">
+        <label for="form_value">Value</label>
+        <input id="form_value" type="text" name="value" />
+      </div>
+      <button class="btn btn-primary btn-block" type="submit" value="Submit">Add the metric</button>
+    </form>
+    <hr />
+  </div>
+
+</body>
+
+</html>

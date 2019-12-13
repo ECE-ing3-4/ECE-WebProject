@@ -1,0 +1,2 @@
+tsc .\src\server.ts
+node .\src\server.js

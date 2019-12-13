@@ -1,0 +1,5 @@
+2019/12/06-21:14:20.366 5cb0 Recovering log #35
+2019/12/06-21:14:20.366 5cb0 Level-0 table #38: started
+2019/12/06-21:14:20.391 5cb0 Level-0 table #38: 191 bytes OK
+2019/12/06-21:14:20.539 5cb0 Delete type=0 #35
+2019/12/06-21:14:20.539 5cb0 Delete type=3 #33
