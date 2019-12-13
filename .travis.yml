@@ -1,6 +1,8 @@
 sudo:true
 node_js:
 - node
+git:
+  depth: false
 before_script:
 - npm install
 script:
