@@ -3,7 +3,7 @@ sudo:
 node_js:
 - "node"
 git:
-  depth: false
+  depth: 1
 before_script:
 - npm install
 script:
