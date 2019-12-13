@@ -1,4 +1,5 @@
-sudo:true
+sudo:
+  true
 node_js:
 - "node"
 git:
