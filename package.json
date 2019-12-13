@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "sh ./node_modules/.bin/ts-node src/server.ts",
-    "populate": "sh ./node_modules/.bin/ts-node src/populate.ts",
-    "dev": "sh ./node_modules/.bin/nodemon ",
-    "build": "sh ./node_modules/.bin/tsc -p tsconfig.json",
-    "test": "sh ./node_modules/.bin/mocha -r ts-node/register src/**/*.test.ts"
+    "start": "./node_modules/.bin/ts-node src/server.ts",
+    "populate": "./node_modules/.bin/ts-node src/populate.ts",
+    "dev": "./node_modules/.bin/nodemon ",
+    "build": "./node_modules/.bin/tsc -p tsconfig.json",
+    "test": "./node_modules/.bin/mocha -r ts-node/register src/**/*.test.ts"
   },
   "author": "",
   "license": "ISC",
