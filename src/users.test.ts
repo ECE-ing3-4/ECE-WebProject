@@ -14,7 +14,7 @@ describe('Metrics', function () {
   after(function () {
     dbUsr.db.close()
   })
-
+/*
   describe('#get USER', function () {
     it('should get empty array on non existing group', function () {
       dbUsr.get("neilTEST", (err: Error | null, result?: User) => {
@@ -66,4 +66,5 @@ describe('Metrics', function () {
       })
     })
   })
+  */
 })
