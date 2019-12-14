@@ -2,7 +2,7 @@ import chai, { expect } from 'chai'
 import { Metric, MetricsHandler } from './metrics'
 import { LevelDB } from "./leveldb"
 
-const dbPath: string = 'db/tests/metrics'
+const dbPath: string = 'db-tests-metrics'
 var dbMet: MetricsHandler// = new MetricsHandler(dbPath)
 
 describe('Metrics', function () {
@@ -14,7 +14,7 @@ describe('Metrics', function () {
   after(function () {
     dbMet.db.close()
   })
-/*
+
   describe('#get metric', function () {
     it('should get empty array on non existing group', function () {
       dbMet.getOne(0, (err: Error | null, result?: Metric[]) => {
@@ -24,7 +24,7 @@ describe('Metrics', function () {
       })
     })
   })
-*/
+
   describe('#save metric', function () {
     it('should save data', function () {
       var metrics: Metric[] = []
