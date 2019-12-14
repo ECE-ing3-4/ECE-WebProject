@@ -85,6 +85,7 @@ typings/
 .DS_Store
 
 db/*
+db-tests-metrics/*
 !*/.gitkeep
 src_old
 db_test
