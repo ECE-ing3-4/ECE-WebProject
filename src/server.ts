@@ -188,6 +188,13 @@ app.delete('/metrics/:id/:timestamp/:username', authCheck, (req: any, res: any) 
   })
 })*/
 
+app.get('/allUsers', (req: any, res: any) => {
+  dbUser.getAllUsers((err: Error | null, result: any) => {
+    if (err) throw err
+    res.status(200).send(result)
+  })
+})
+
 app.post('/metric', authCheck, (req: any, res: any) => {
   dbMet.deleteOne(req.body.id, req.body.timestamp, req.session.user.username)
   res.redirect('/')

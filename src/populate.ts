@@ -26,4 +26,8 @@ usr.forEach((u: User) => {
     if (err) throw err
     console.log('User populated')
   })
+  dbUsr.deleteUsr(u,(err: Error | null) => {
+    if (err) throw err
+    console.log('User deleted, rip')
+  })
 })
