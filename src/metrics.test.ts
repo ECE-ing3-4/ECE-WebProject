@@ -7,6 +7,7 @@ var dbMet: MetricsHandler// = new MetricsHandler(dbPath)
 
 describe('Metrics', function () {
   before(function () {
+    console.log("ON LANCE LES TESTS !!!")
     LevelDB.clear(dbPath)
     dbMet = new MetricsHandler(dbPath)
   })
@@ -28,6 +29,7 @@ describe('Metrics', function () {
   describe('#save metric', function () {
     it('should save data', function () {
       var metrics: Metric[] = []
+      var n
       metrics.push(new Metric("123456789", 15,"neil"))
       dbMet.save(0, metrics, (err: Error | null) => {
         expect(metrics).to.not.be.empty
@@ -35,7 +37,9 @@ describe('Metrics', function () {
           expect(err).to.be.null
           expect(result).to.not.be.undefined
           if (result)
-            expect(result[0].value).to.equal(15)
+          n=result[0].value
+          console.log("VALEUR1 ",n)
+          expect(n).to.equal(15)
         })
       })
     })
@@ -50,7 +54,7 @@ describe('Metrics', function () {
           expect(result).to.not.be.undefined
           if (result)
             n=result[0].value
-            console.log("VALEUR ",n)
+            console.log("VALEUR2 ",n)
             expect(n).to.equal(16)
         })
       })
