@@ -48,7 +48,7 @@ describe('Metrics', function () {
           expect(err).to.be.null
           expect(result).to.not.be.undefined
           if (result)
-            expect(result[0].value).to.equal(15)
+            expect(result[0].value).to.equal(16)
         })
       })
     })
