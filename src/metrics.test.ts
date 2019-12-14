@@ -41,6 +41,7 @@ describe('Metrics', function () {
     })
     it('should update data', function () {
       var metrics: Metric[] = []
+      var n
       metrics.push(new Metric("123456789", 16,"neil"))
       dbMet.save(0, metrics, (err: Error | null) => {
         expect(metrics).to.not.be.empty
@@ -48,7 +49,9 @@ describe('Metrics', function () {
           expect(err).to.be.null
           expect(result).to.not.be.undefined
           if (result)
-            expect(result[0].value).to.equal(16)
+            n=result[0].value
+            console.log("VALEUR ",n)
+            expect(n).to.equal(16)
         })
       })
     })
