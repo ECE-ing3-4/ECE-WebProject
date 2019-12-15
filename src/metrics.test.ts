@@ -38,7 +38,7 @@ describe('Metrics', function () {
           expect(result).to.not.be.undefined
           if (result)
           n=result[0].value
-          //console.log("VALEUR1 ",n)
+          console.log("VALEUR1 ",n)
           expect(n).to.equal(15)
         })
       })
@@ -54,7 +54,7 @@ describe('Metrics', function () {
           expect(result).to.not.be.undefined
           if (result)
             n=result[0].value
-            //console.log("VALEUR2 ",n)
+            console.log("VALEUR2 ",n)
             expect(n).to.equal(16)
         })
       })
