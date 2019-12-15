@@ -38,7 +38,7 @@ describe('Metrics', function () {
           expect(result).to.not.be.undefined
           if (result)
           n=result[0].value
-          console.log("VALEUR1 ",n)
+          //console.log("VALEUR1 ",n)
           expect(n).to.equal(15)
         })
       })
@@ -54,7 +54,7 @@ describe('Metrics', function () {
           expect(result).to.not.be.undefined
           if (result)
             n=result[0].value
-            console.log("VALEUR2 ",n)
+            //console.log("VALEUR2 ",n)
             expect(n).to.equal(16)
         })
       })
@@ -68,6 +68,7 @@ describe('Metrics', function () {
       dbMet.getOne(0, function (err: Error | null, result?: Metric[]) {
         expect(err).to.be.null
         expect(result).to.not.be.undefined
+        console.log("RESULT",result)
         expect(result).to.be.empty
       })
     })
