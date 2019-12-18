@@ -1,12 +1,3 @@
-sudo:true
+language: node_js
 node_js:
-- node
-git:
-  depth: false
-before_script:
-- npm install
-script:
-- npm run test
-cache:
-  directories:
-  - node_modules
+- "v12.13.0"

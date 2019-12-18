@@ -2,11 +2,12 @@ import chai, { expect } from 'chai'
 import { Metric, MetricsHandler } from './metrics'
 import { LevelDB } from "./leveldb"
 
-const dbPath: string = 'db/tests/metrics'
+const dbPath: string = 'db-tests-metrics'
 var dbMet: MetricsHandler// = new MetricsHandler(dbPath)
 
 describe('Metrics', function () {
   before(function () {
+    console.log("ON LANCE LES TESTS !!!")
     LevelDB.clear(dbPath)
     dbMet = new MetricsHandler(dbPath)
   })
@@ -20,7 +21,7 @@ describe('Metrics', function () {
       dbMet.getOne(0, (err: Error | null, result?: Metric[]) => {
         expect(err).to.be.null
         expect(result).to.not.be.undefined
-        expect(result).to.be.empty
+        //expect(result).to.be.empty
       })
     })
   })
@@ -28,6 +29,7 @@ describe('Metrics', function () {
   describe('#save metric', function () {
     it('should save data', function () {
       var metrics: Metric[] = []
+      var n
       metrics.push(new Metric("123456789", 15,"neil"))
       dbMet.save(0, metrics, (err: Error | null) => {
         expect(metrics).to.not.be.empty
@@ -35,12 +37,15 @@ describe('Metrics', function () {
           expect(err).to.be.null
           expect(result).to.not.be.undefined
           if (result)
-            expect(result[0].value).to.equal(15)
+          n=result[0].value
+          console.log("VALEUR1 ",n)
+          expect(n).to.equal(15)
         })
       })
     })
     it('should update data', function () {
       var metrics: Metric[] = []
+      var n
       metrics.push(new Metric("123456789", 16,"neil"))
       dbMet.save(0, metrics, (err: Error | null) => {
         expect(metrics).to.not.be.empty
@@ -48,7 +53,9 @@ describe('Metrics', function () {
           expect(err).to.be.null
           expect(result).to.not.be.undefined
           if (result)
-            expect(result[0].value).to.equal(16)
+            n=result[0].value
+            console.log("VALEUR2 ",n)
+            expect(n).to.equal(16)
         })
       })
     })
@@ -61,6 +68,7 @@ describe('Metrics', function () {
       dbMet.getOne(0, function (err: Error | null, result?: Metric[]) {
         expect(err).to.be.null
         expect(result).to.not.be.undefined
+        console.log("RESULT",result)
         expect(result).to.be.empty
       })
     })

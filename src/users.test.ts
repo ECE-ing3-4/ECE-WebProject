@@ -2,7 +2,7 @@ import chai, { expect } from 'chai'
 import { User, UserHandler } from './user'
 import { LevelDB } from "./leveldb"
 
-const dbPath: string = 'db/tests/users'
+const dbPath: string = 'db-tests-users'
 var dbUsr: UserHandler
 
 describe('Metrics', function () {

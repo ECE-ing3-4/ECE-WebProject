@@ -25,7 +25,7 @@ app.set('views', __dirname + "/../views")
 const authCheck = function (req: any, res: any, next: any) {
   if (req.session.loggedIn) {
     next()
-  } else res.redirect('/login')
+  } else res.redirect('/homepage')
 }
 
 app.use(session({
@@ -34,6 +34,10 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }))
+
+authRouter.get('/homepage', (req: any, res: any) => {
+  res.render('homepage')
+})
 
 authRouter.get('/login', (req: any, res: any) => {
   res.render('login')
@@ -187,6 +191,13 @@ app.delete('/metrics/:id/:timestamp/:username', authCheck, (req: any, res: any) 
     res.status(200).send()
   })
 })*/
+
+app.get('/allUsers', (req: any, res: any) => {
+  dbUser.getAllUsers((err: Error | null, result: any) => {
+    if (err) throw err
+    res.status(200).send(result)
+  })
+})
 
 app.post('/metric', authCheck, (req: any, res: any) => {
   dbMet.deleteOne(req.body.id, req.body.timestamp, req.session.user.username)
