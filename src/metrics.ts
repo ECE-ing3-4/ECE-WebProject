@@ -30,16 +30,6 @@ export class MetricsHandler {
     stream.end()
   }
 
-  /*
-  public get(callback: (error: Error | null, result?: Metric[]) => void) {
-    const result = [
-      new Metric('2013-11-04 14:00 UTC', 12),
-      new Metric('2013-11-04 14:30 UTC', 15)
-    ]
-    callback(null, result)
-  }
-  */
-
   public getOne(key: number, callback: (error: Error | null, result: any) => void) {
     let metrics: Metric[] = []
     this.db.createReadStream()
@@ -92,18 +82,19 @@ export class MetricsHandler {
         callback(null, metrics)
       })
   }
-/*
-  public getAll(callback: (error: Error | null, result: any) => void) {
-    let metrics: Metric[] = []
+
+  public deleteOne(key: number, timestamp: any, username: string) {
+    this.db.del(`metric:${key}:${timestamp}:${username}`)
+  }
+
+  public deleteAll(callback: (error: Error | null, result: any) => void) {
     this.db.createReadStream()
       .on('data', function (data) {
-        console.log(data.key, '=', data.value)
-
+        let key: string = data.key.split(':')[1]
         let timestamp: string = data.key.split(':')[2]
         let username: string = data.key.split(':')[3]
-        let metric: Metric = new Metric(timestamp, data.value, username)
-
-        metrics.push(metric)
+        //deleteOne(key, timestamp,username)
+        //this.db.del(`metric:${key}:${timestamp}:${username}`)
       })
       .on('error', function (err) {
         console.log('Oh my!', err)
@@ -114,12 +105,7 @@ export class MetricsHandler {
       })
       .on('end', function () {
         console.log('Stream ended')
-        callback(null, metrics)
       })
-  }*/
-
-  public deleteOne(key: number, timestamp: any, username: string) {
-    this.db.del(`metric:${key}:${timestamp}:${username}`)
   }
 
   public deleteTimeStamp(timestamp: any, data: any, username: string) {
