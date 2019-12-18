@@ -34,7 +34,10 @@
       e.preventDefault();
       $.getJSON("/metrics", {}, (data) => {
         const content = data.map(d => {
-          return 'timestamp: ' + d.timestamp + ', value: ' + d.value + '<br/>';
+
+          var date = new Date(parseInt(d.timestamp,10))
+          
+          return 'timestamp: ' + date.getDate() +'/' + date.getMonth() +'/'+ date.getFullYear() +' at '+ date.getHours() +'h'+ date.getMinutes()+ ':' + date.getSeconds() + ', value: ' + d.value + '<br/>';
         })
         $('#metrics').append(content.join("\n"));
       });
