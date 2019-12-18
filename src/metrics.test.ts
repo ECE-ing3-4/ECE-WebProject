@@ -17,64 +17,69 @@ describe('Metrics', function () {
   })
 
   describe('#get metric', function () {
-    it('should get empty array on non existing group', function () {
+    it('should get empty array on non existing group', function (done) {
       dbMet.getOne(0, (err: Error | null, result?: Metric[]) => {
         expect(err).to.be.null
         expect(result).to.not.be.undefined
-        //expect(result).to.be.empty
+        expect(result).to.be.empty
+        done()
       })
     })
   })
 
   describe('#save metric', function () {
-    it('should save data', function () {
+    it('should save data', function (done) {
       var metrics: Metric[] = []
       var n
-      metrics.push(new Metric("123456789", 15,"neil"))
+      metrics.push(new Metric("123456789", 15, "neil"))
       dbMet.save(0, metrics, (err: Error | null) => {
         expect(metrics).to.not.be.empty
         dbMet.getOne(0, function (err: Error | null, result?: Metric[]) {
           expect(err).to.be.null
           expect(result).to.not.be.undefined
           if (result)
-          n=result[0].value
-          console.log("VALEUR1 ",n)
+            n = result[0].value
+          console.log("VALEUR1 ", n)
           expect(n).to.equal(15)
         })
+        done()
       })
     })
-    it('should update data', function () {
+    it('should update data', function (done) {
       var metrics: Metric[] = []
       var n
-      metrics.push(new Metric("123456789", 16,"neil"))
+      metrics.push(new Metric("123456789", 16, "neil"))
       dbMet.save(0, metrics, (err: Error | null) => {
         expect(metrics).to.not.be.empty
         dbMet.getOne(0, function (err: Error | null, result?: Metric[]) {
           expect(err).to.be.null
           expect(result).to.not.be.undefined
           if (result)
-            n=result[0].value
-            console.log("VALEUR2 ",n)
-            expect(n).to.equal(16)
+            n = result[0].value
+          console.log("VALEUR2 ", n)
+          expect(n).to.equal(16)
         })
       })
+      done()
     })
   })
 
   describe('#delete metric', function () {
-    it('should delete data', function () {
+    it('should delete data', function (done) {
       var time: any = "123456789"
-      dbMet.deleteOne(0, time,"neil")
+      dbMet.deleteOne(0, time, "neil")
       dbMet.getOne(0, function (err: Error | null, result?: Metric[]) {
         expect(err).to.be.null
         expect(result).to.not.be.undefined
-        console.log("RESULT",result)
+        console.log("RESULT", result)
         expect(result).to.be.empty
       })
+      done()
     })
-    it('should not fail if data does not exist', function () {
+    it('should not fail if data does not exist', function (done) {
       var time: any = "123456789"
-      dbMet.deleteOne(0, time,"neil")
+      dbMet.deleteOne(0, time, "neil")
+      done()
     })
   })
 })

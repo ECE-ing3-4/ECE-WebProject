@@ -1,4 +1,5 @@
 import LevelDB = require('./leveldb')
+import { LevelDB as LDB} from "./leveldb"
 import WriteStream from 'level-ws'
 
 export class Metric {
@@ -15,9 +16,11 @@ export class Metric {
 
 export class MetricsHandler {
   public db: any
+  public dbPath:string
 
-  constructor(dbPath: string) {
-    this.db = LevelDB.LevelDB.open(dbPath)
+  constructor(dbP: string) {
+    this.dbPath=dbP
+    this.db = LevelDB.LevelDB.open(this.dbPath)
   }
 
   public save(key: number, metrics: Metric[], callback: (error: Error | null) => void) {
@@ -30,21 +33,6 @@ export class MetricsHandler {
     stream.end()
   }
 
-<<<<<<< HEAD
-=======
-
-
-  /*
-  public get(callback: (error: Error | null, result?: Metric[]) => void) {
-    const result = [
-      new Metric('2013-11-04 14:00 UTC', 12),
-      new Metric('2013-11-04 14:30 UTC', 15)
-    ]
-    callback(null, result)
-  }
-  */
-
->>>>>>> 123c5046b2200fe1d850b00004b3e8b217989fc9
   public getOne(key: number, callback: (error: Error | null, result: any) => void) {
     let metrics: Metric[] = []
     this.db.createReadStream()
@@ -57,6 +45,7 @@ export class MetricsHandler {
           let username: string = data.key.split(':')[3]
           let metric: Metric = new Metric(timestamp, data.value, username)
           metrics.push(metric)
+          console.log("metric found : ",metric)
         }
       })
       .on('error', function (err) {
@@ -99,28 +88,13 @@ export class MetricsHandler {
   }
 
   public deleteOne(key: number, timestamp: any, username: string) {
+    console.log("metrics to delete : ",`metric:${key}:${timestamp}:${username}`)
     this.db.del(`metric:${key}:${timestamp}:${username}`)
   }
 
   public deleteAll(callback: (error: Error | null, result: any) => void) {
-    this.db.createReadStream()
-      .on('data', function (data) {
-        let key: string = data.key.split(':')[1]
-        let timestamp: string = data.key.split(':')[2]
-        let username: string = data.key.split(':')[3]
-        //deleteOne(key, timestamp,username)
-        //this.db.del(`metric:${key}:${timestamp}:${username}`)
-      })
-      .on('error', function (err) {
-        console.log('Oh my!', err)
-        callback(err, null)
-      })
-      .on('close', function () {
-        console.log('Stream closed')
-      })
-      .on('end', function () {
-        console.log('Stream ended')
-      })
+    console.log("ON SUPPRIME TOUS LES METRICS")
+    LDB.clear(this.dbPath)
   }
 
   public deleteTimeStamp(timestamp: any, data: any, username: string) {

@@ -47,6 +47,10 @@ authRouter.get('/signup', (req: any, res: any) => {
   res.render('signup')
 })
 
+authRouter.get('/graph', (req: any, res: any) => {
+  res.render('graph')
+})
+
 authRouter.get('/addmetric', authCheck, (req: any, res: any) => {
   res.render('addmetric')
 })
@@ -153,6 +157,10 @@ app.use('/user', userRouter)
 
 app.get('/', authCheck, (req: any, res: any) => {
   res.render('index', { name: req.session.user.username })
+})
+
+app.get('/deleteAll', authCheck, (req: any, res: any) => {
+  dbMet.deleteAll((error: Error | null, result: any) => {})
 })
 
 app.post('/metrics/:id', authCheck, (req: any, res: any) => {
