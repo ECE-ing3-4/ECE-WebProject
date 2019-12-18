@@ -32,21 +32,6 @@ export class MetricsHandler {
     stream.end()
   }
 
-<<<<<<< HEAD
-=======
-
-
-  /*
-  public get(callback: (error: Error | null, result?: Metric[]) => void) {
-    const result = [
-      new Metric('2013-11-04 14:00 UTC', 12),
-      new Metric('2013-11-04 14:30 UTC', 15)
-    ]
-    callback(null, result)
-  }
-  */
-
->>>>>>> 123c5046b2200fe1d850b00004b3e8b217989fc9
   public getOne(key: number, callback: (error: Error | null, result: any) => void) {
     let metrics: Metric[] = []
     this.db.createReadStream()
