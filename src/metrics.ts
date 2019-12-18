@@ -25,10 +25,12 @@ export class MetricsHandler {
 
   public save(key: number, metrics: Metric[], callback: (error: Error | null) => void) {
     const stream = WriteStream(this.db)
+    var ajd = new Date()
+    let time=ajd.getTime();
     stream.on('error', callback)
     stream.on('close', callback)
     metrics.forEach((m: Metric) => {
-      stream.write({ key: `metric:${key}:${m.timestamp}:${m.username}`, value: m.value })
+      stream.write({ key: `metric:${key}:${time}:${m.username}`, value: m.value })
     })
     stream.end()
   }
