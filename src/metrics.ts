@@ -30,6 +30,8 @@ export class MetricsHandler {
     stream.end()
   }
 
+
+
   /*
   public get(callback: (error: Error | null, result?: Metric[]) => void) {
     const result = [
