@@ -22,6 +22,8 @@ Tests can be done using
 ```bash
 npm test
 ```
+Badge CI- Travis: 
+[![Build Status](https://travis-ci.org/NeilSCGH/WebProject.svg?branch=master)](https://travis-ci.org/NeilSCGH/WebProject) 
 
 ##Middleware part
 
