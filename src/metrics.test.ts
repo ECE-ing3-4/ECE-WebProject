@@ -7,7 +7,7 @@ var dbMet: MetricsHandler// = new MetricsHandler(dbPath)
 
 describe('Metrics', function () {
   before(function () {
-    console.log("ON LANCE LES TESTS !!!")
+    console.log("End to End test, checking if all our application is sucessfuly working!")
     LevelDB.clear(dbPath)
     dbMet = new MetricsHandler(dbPath)
   })
